@@ -28,13 +28,11 @@ public class PageObjectTest {
         loginPage.clickLoginButton();
         String user = profilePage.getLoginTitle();
         Assert.assertEquals("Selenium Test", user);
-
     }
 
     @Test
     public void logoutTest() {
         Assert.assertTrue(profilePage.logoutCheck());
-
     }
 
     @AfterClass

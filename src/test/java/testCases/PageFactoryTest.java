@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.ProfilePage;
+import java.io.IOException;
 
 
 public class PageFactoryTest {
@@ -21,13 +22,17 @@ public class PageFactoryTest {
         loginPage = new LoginPage(driver);
         profilePage = new ProfilePage(driver);
         driver.get("https://www.tut.by/");
+        driver.manage().window().maximize();
     }
 
     @Test
-    public void loginTest() {
+    public void loginTest() throws IOException {
         loginPage.inputLogin("seleniumtests@tut.by");
         loginPage.inputPasswd("123456789zxcvbn");
         loginPage.clickLoginBtn();
+
+
+        profilePage.takeScreenshot("screenAfterLogin");
         String user = profilePage.getUserName();
         Assert.assertEquals("Selenium Test", user);
     }

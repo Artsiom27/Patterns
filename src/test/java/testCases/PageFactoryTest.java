@@ -30,7 +30,6 @@ public class PageFactoryTest {
         loginPage.clickLoginBtn();
         String user = profilePage.getUserName();
         Assert.assertEquals("Selenium Test", user);
-
     }
 
     @Test

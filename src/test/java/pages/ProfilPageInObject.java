@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ProfilPageInObject {
-    WebDriver driver;
-    By userMenu = By.xpath("//span[@class = 'uname']");
-    By logoutButton = By.xpath("//div[@class=\"b-popup-i\"]/a");
-    By enterButton = By.xpath("//a[@class = 'enter']");
-    By password = By.name("password");
+
+    private static final By userMenu = By.xpath("//span[@class = 'uname']");
+    private static final By logoutButton = By.xpath("//div[@class=\"b-popup-i\"]/a");
+    private static final By enterButton = By.xpath("//a[@class = 'enter']");
+    private static final By password = By.name("password");
+
+    private final WebDriver driver;
 
     public ProfilPageInObject(WebDriver driver) {
         this.driver = driver;

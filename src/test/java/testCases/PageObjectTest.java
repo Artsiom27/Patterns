@@ -1,41 +1,39 @@
 package testCases;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.annotations.*;
 import pages.LoginPageInObject;
 import pages.ProfilPageInObject;
 
 public class PageObjectTest {
-    public static LoginPageInObject loginPage;
-    public static ProfilPageInObject profilePage;
-    static WebDriver driver;
+    private LoginPageInObject loginPage;
+    private ProfilPageInObject profilePage;
+    private WebDriver driver;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
         loginPage = new LoginPageInObject(driver);
         profilePage = new ProfilPageInObject(driver);
-        driver.get("https://www.tut.by/");
     }
 
     @Test
-    public void loginTest() {
-        loginPage.inputLoginAndPassword("seleniumtests@tut.by","123456789zxcvbn" );
-        loginPage.clickLoginButton();
+    void loginTest() {
+        loginPage.userLogin("seleniumtests@tut.by", "123456789zxcvbn");
         String user = profilePage.getLoginTitle();
         Assert.assertEquals("Selenium Test", user);
     }
 
     @Test
-    public void logoutTest() {
+    void logoutTest() {
+        loginPage.userLogin("seleniumtests@tut.by", "123456789zxcvbn");
         Assert.assertTrue(profilePage.logoutCheck());
     }
 
-    @AfterClass
+    @AfterMethod
     public void close() {
         driver.quit();
     }

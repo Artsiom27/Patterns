@@ -3,47 +3,44 @@ package testCases;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.ProfilePage;
+
 import java.io.IOException;
 
-
 public class PageFactoryTest {
-    public static LoginPage loginPage;
-    public static ProfilePage profilePage;
-    static WebDriver driver;
 
-    @BeforeClass
+    private LoginPage loginPage;
+    private ProfilePage profilePage;
+    private WebDriver driver;
+
+    @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
         profilePage = new ProfilePage(driver);
-        driver.get("https://www.tut.by/");
-        driver.manage().window().maximize();
     }
 
     @Test
-    public void loginTest() throws IOException {
-        loginPage.inputLogin("seleniumtests@tut.by");
-        loginPage.inputPasswd("123456789zxcvbn");
-        loginPage.clickLoginBtn();
-
+    void loginTest() throws IOException {
+        loginPage.inputLogin("seleniumtests@tut.by", "123456789zxcvbn");
 
         profilePage.takeScreenshot("screenAfterLogin");
         String user = profilePage.getUserName();
+
         Assert.assertEquals("Selenium Test", user);
     }
 
     @Test
-    public void logoutTest() {
+    void logoutTest() {     // can I combine these two methods into one
+        loginPage.inputLogin("seleniumtests@tut.by", "123456789zxcvbn");
         Assert.assertTrue(profilePage.logoutCheck());
-
     }
 
-    @AfterClass
+    @AfterMethod
     public void close() {
         driver.quit();
     }

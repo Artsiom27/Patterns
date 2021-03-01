@@ -6,13 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
-    public WebDriver driver;
-
-    public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-
     @FindBy(xpath = "//a[@class = 'enter']")
     private WebElement enterButton;
 
@@ -25,20 +18,23 @@ public class LoginPage {
     @FindBy(name = "password")
     private WebElement password;
 
+    private final WebDriver driver;
 
-    public void inputLogin(String login) {
+    public LoginPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+        driver.get("https://www.tut.by/");
+        driver.manage().window().maximize();
+    }
+
+    public ProfilePage inputLogin(String login, String passwd) {
         enterButton.click();
         userName.sendKeys(login);
-    }
-
-    public void inputPasswd(String passwd) {
         password.sendKeys(passwd);
-    }
-
-    public void clickLoginBtn() {
         loginButton.click();
+        return new ProfilePage(driver);
     }
-
 }
+
 
 

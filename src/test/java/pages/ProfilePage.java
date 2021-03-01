@@ -12,12 +12,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class ProfilePage {
-    public WebDriver driver;
-
-    public ProfilePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
 
     @FindBy(xpath = "//span[@class = 'uname']")
     private WebElement userMenu;
@@ -33,6 +27,14 @@ public class ProfilePage {
 
     @FindBy(name = "password")
     private WebElement password;
+
+    private final WebDriver driver;
+
+    public ProfilePage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+
+    }
 
     public String getUserName() {
         String userName = userMenu.getText();

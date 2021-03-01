@@ -15,6 +15,7 @@ public class ProfilPageInObject {
     public ProfilPageInObject(WebDriver driver) {
         this.driver = driver;
     }
+
     public String getLoginTitle(){
         return    driver.findElement(userMenu).getText();
 

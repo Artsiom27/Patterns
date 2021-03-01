@@ -23,8 +23,8 @@ public class LoginPage {
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        driver.get("https://www.tut.by/");
-        driver.manage().window().maximize();
+        this.driver.get("https://www.tut.by/");
+        this.driver.manage().window().maximize();
     }
 
     public ProfilePage inputLogin(String login, String passwd) {

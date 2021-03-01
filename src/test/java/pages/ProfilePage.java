@@ -33,7 +33,6 @@ public class ProfilePage {
     public ProfilePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-
     }
 
     public String getUserName() {
@@ -51,7 +50,7 @@ public class ProfilePage {
 
     public void takeScreenshot(String fileName) throws IOException {
         File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.moveFile(src, new File(fileName+".png"));
+        FileUtils.moveFile(src, new File(fileName + ".png"));
     }
 }
 

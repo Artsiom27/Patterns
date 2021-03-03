@@ -30,7 +30,7 @@ public class PageObjectTest {
     void logoutTest() {
         loginPage.login("seleniumtests@tut.by", "123456789zxcvbn");
         profilePage.logout();
-        Assert.assertTrue(profilePage.logoutCheck());
+        Assert.assertTrue(loginPage.logoutCheck());
     }
 
     @AfterMethod

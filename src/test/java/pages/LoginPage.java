@@ -25,4 +25,9 @@ public class LoginPage {
         driver.findElement(LOGIN_BUTTON).click();
         return new ProfilPage(driver);
     }
+
+    public Boolean logoutCheck() {
+        driver.findElement(ENTER_BUTTON).click();
+        return driver.findElement(PASSWORD).isDisplayed();
+    }
 }

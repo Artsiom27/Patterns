@@ -7,8 +7,6 @@ public class ProfilPage {
 
     private static final By USERMENU = By.xpath("//span[@class = 'uname']");
     private static final By LOGOUT_BUTTON = By.xpath("//div[@class=\"b-popup-i\"]/a");
-    private static final By ENTER_BUTTON = By.xpath("//a[@class = 'enter']");
-    private static final By PASSWORD = By.name("password");
 
     private final WebDriver driver;
 
@@ -24,10 +22,5 @@ public class ProfilPage {
         driver.findElement(USERMENU).click();
         driver.findElement(LOGOUT_BUTTON).click();
         return new LoginPage(driver);
-    }
-
-    public Boolean logoutCheck() {
-        driver.findElement(ENTER_BUTTON).click();
-        return driver.findElement(PASSWORD).isDisplayed();
     }
 }

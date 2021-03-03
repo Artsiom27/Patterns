@@ -4,31 +4,32 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.LoginPageInObject;
-import pages.ProfilPageInObject;
+import pages.LoginPage;
+import pages.ProfilPage;
 
 public class PageObjectTest {
-    private LoginPageInObject loginPage;
-    private ProfilPageInObject profilePage;
+    private LoginPage loginPage;
+    private ProfilPage profilePage;
     private WebDriver driver;
 
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
-        loginPage = new LoginPageInObject(driver);
-        profilePage = new ProfilPageInObject(driver);
+        loginPage = new LoginPage(driver);
+        profilePage = new ProfilPage(driver);
     }
 
     @Test
     void loginTest() {
-        loginPage.userLogin("seleniumtests@tut.by", "123456789zxcvbn");
+        loginPage.login("seleniumtests@tut.by", "123456789zxcvbn");
         String user = profilePage.getLoginTitle();
         Assert.assertEquals("Selenium Test", user);
     }
 
     @Test
     void logoutTest() {
-        loginPage.userLogin("seleniumtests@tut.by", "123456789zxcvbn");
+        loginPage.login("seleniumtests@tut.by", "123456789zxcvbn");
+        profilePage.logout();
         Assert.assertTrue(profilePage.logoutCheck());
     }
 

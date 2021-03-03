@@ -19,15 +19,6 @@ public class ProfilePage {
     @FindBy(xpath = "//div[@class=\"b-popup-i\"]/a")
     private WebElement logoutButton;
 
-    @FindBy(xpath = "//a[@class = 'enter']")
-    private WebElement enterButton;
-
-    @FindBy(xpath = "//*[@class=\"button m-green auth__enter\"]")
-    private WebElement loginButton;
-
-    @FindBy(name = "password")
-    private WebElement password;
-
     private final WebDriver driver;
 
     public ProfilePage(WebDriver driver) {

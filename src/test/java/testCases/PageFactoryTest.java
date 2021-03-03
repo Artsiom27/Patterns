@@ -38,7 +38,7 @@ public class PageFactoryTest {
     void logoutTest() {
         loginPage.login("seleniumtests@tut.by", "123456789zxcvbn");
         profilePage.logout();
-        Assert.assertTrue(loginPage.);
+        Assert.assertTrue(loginPage.logoutCheck());
     }
 
     @AfterMethod

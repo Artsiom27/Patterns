@@ -36,10 +36,9 @@ public class LoginPage {
         return new ProfilePage(driver);
     }
 
-    public Boolean logoutCheck(){
+    public Boolean logoutCheck() {
         enterButton.click();
-
-        return Boolean logoutCheck = password.isDisplayed();
+        return password.isDisplayed();
     }
 }
 

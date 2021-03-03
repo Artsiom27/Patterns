@@ -26,7 +26,7 @@ public class PageFactoryTest {
 
     @Test
     void loginTest() throws IOException {
-        loginPage.inputLogin("seleniumtests@tut.by", "123456789zxcvbn");
+        loginPage.login("seleniumtests@tut.by", "123456789zxcvbn");
 
         profilePage.takeScreenshot("screenAfterLogin");
         String user = profilePage.getUserName();
@@ -35,9 +35,10 @@ public class PageFactoryTest {
     }
 
     @Test
-    void logoutTest() {     // can I combine these two methods into one
-        loginPage.inputLogin("seleniumtests@tut.by", "123456789zxcvbn");
-        Assert.assertTrue(profilePage.logoutCheck());
+    void logoutTest() {
+        loginPage.login("seleniumtests@tut.by", "123456789zxcvbn");
+        profilePage.logout();
+        Assert.assertTrue(loginPage.);
     }
 
     @AfterMethod

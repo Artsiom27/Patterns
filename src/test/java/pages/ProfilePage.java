@@ -40,12 +40,10 @@ public class ProfilePage {
         return userName;
     }
 
-    public Boolean logoutCheck() {
+    public LoginPage logout() {
         userMenu.click();
         logoutButton.click();
-        enterButton.click();
-        Boolean logoutCheck = password.isDisplayed();
-        return logoutCheck;
+        return new LoginPage(driver);
     }
 
     public void takeScreenshot(String fileName) throws IOException {

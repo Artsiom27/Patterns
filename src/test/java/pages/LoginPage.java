@@ -19,7 +19,7 @@ public class LoginPage {
     private WebElement password;
 
     private final WebDriver driver;
-    private final String URL = "https://www.tut.by/";
+    private static final String URL = "https://www.tut.by/";
 
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -36,9 +36,8 @@ public class LoginPage {
         return new ProfilePage(driver);
     }
 
-    public Boolean logoutCheck() {
-        enterButton.click();
-        return password.isDisplayed();
+    public Boolean isLoginPageDisplayed() {
+        return enterButton.isDisplayed();
     }
 }
 

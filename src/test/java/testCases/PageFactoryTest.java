@@ -16,6 +16,10 @@ public class PageFactoryTest {
     private LoginPage loginPage;
     private ProfilePage profilePage;
     private WebDriver driver;
+    private static final String USER = "seleniumtests@tut.by";
+    private static final String PASSWORD = "123456789zxcvbn";
+    private static final String USER_NAME_EXPECTED = "Selenium Test";
+
 
     @BeforeMethod
     public void setUp() {
@@ -26,19 +30,16 @@ public class PageFactoryTest {
 
     @Test
     void loginTest() throws IOException {
-        loginPage.login("seleniumtests@tut.by", "123456789zxcvbn");
-
+        loginPage.login(USER, PASSWORD);
         profilePage.takeScreenshot("screenAfterLogin");
-        String user = profilePage.getUserName();
-
-        Assert.assertEquals("Selenium Test", user);
+        Assert.assertEquals(USER_NAME_EXPECTED, profilePage.getLoginTitle());
     }
 
     @Test
     void logoutTest() {
-        loginPage.login("seleniumtests@tut.by", "123456789zxcvbn");
+        loginPage.login(USER, PASSWORD);
         profilePage.logout();
-        Assert.assertTrue(loginPage.logoutCheck());
+        Assert.assertTrue(loginPage.isLoginPageDisplayed(), "Login page is not displayed!");
     }
 
     @AfterMethod

@@ -26,9 +26,8 @@ public class ProfilePage {
         this.driver = driver;
     }
 
-    public String getUserName() {
-        String userName = userMenu.getText();
-        return userName;
+    public String getLoginTitle() {
+        return userMenu.getText();
     }
 
     public LoginPage logout() {

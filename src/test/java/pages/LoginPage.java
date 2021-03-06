@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.NoSuchElementException;
 
 public class LoginPage {
 
@@ -28,7 +27,7 @@ public class LoginPage {
         return new ProfilPage(driver);
     }
 
-    public Boolean isLoginPageDisplayed() throws NoSuchElementException {
+    public Boolean isLoginPageDisplayed() {
         return driver.findElement(ENTER_BUTTON).isDisplayed();
     }
 }

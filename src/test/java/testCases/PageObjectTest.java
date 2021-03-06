@@ -7,7 +7,6 @@ import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.ProfilPage;
 
-import java.util.NoSuchElementException;
 
 public class PageObjectTest {
     private LoginPage loginPage;
@@ -31,16 +30,11 @@ public class PageObjectTest {
         Assert.assertEquals(USER_NAME_EXPECTED, user);
     }
 
-
-    @Test                   //(expectedExceptions = NoSuchElementException.class,
-    void logoutTest() {     // expectedExceptionsMessageRegExp = "The current page is not displayed! ") try to use it too, byt it doesn't work here
-        try {
-            loginPage.login(USER, PASSWORD);
-            profilePage.logout();
-            Assert.assertTrue(loginPage.isLoginPageDisplayed());
-        } catch (NoSuchElementException e) {
-            Assert.fail("The current page is not displayed!");
-        }
+    @Test
+    void logoutTest() {
+        loginPage.login(USER, PASSWORD);
+        profilePage.logout();
+        Assert.assertTrue(loginPage.isLoginPageDisplayed(), "Login page is not displayed!");
     }
 
     @AfterMethod

@@ -12,7 +12,8 @@ public class Singleton {
 
     @BeforeEach
     public void openBrowser() {
-        driver = WebDriverSingleton.getInstance();
+        WebDriverSingleton singleton = WebDriverSingleton.getInstance();
+        driver = singleton.openBrowser();
     }
 
     @Test

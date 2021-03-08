@@ -1,11 +1,15 @@
 package testCases;
 
+import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.ProfilPage;
+import io.qameta.allure.Attachment;
+
+import java.io.IOException;
 
 
 public class PageObjectTest {
@@ -20,19 +24,23 @@ public class PageObjectTest {
     public void setUp() {
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
-        profilePage = new ProfilPage(driver);
+        //profilePage = new ProfilPage(driver);
     }
 
-    @Test
-    void loginTest() {
-        loginPage.login(USER, PASSWORD);
-        String user = profilePage.getLoginTitle();
-        Assert.assertEquals(USER_NAME_EXPECTED, user);
+    @Test(groups = {"loginTests"})
+    @Description("Some detailed about loginTest ")
+    @Attachment(value = "Page screenshot", type = "png")
+    void loginTest() throws IOException {
+        profilePage = loginPage.login(USER, PASSWORD);
+        profilePage.takeScreenshot("screenAfterLogin");
+        Assert.assertEquals(USER_NAME_EXPECTED, profilePage.getLoginTitle());
     }
 
-    @Test
+
+    @Test(groups = {"logoutTests"})
+    @Description("Some details about logoutTest")
     void logoutTest() {
-        loginPage.login(USER, PASSWORD);
+        profilePage = loginPage.login(USER, PASSWORD);
         profilePage.logout();
         Assert.assertTrue(loginPage.isLoginPageDisplayed(), "Login page is not displayed!");
     }

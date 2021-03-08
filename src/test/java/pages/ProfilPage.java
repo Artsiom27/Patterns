@@ -1,7 +1,13 @@
 package pages;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+
+import java.io.File;
+import java.io.IOException;
 
 public class ProfilPage {
 
@@ -22,5 +28,10 @@ public class ProfilPage {
         driver.findElement(USERMENU).click();
         driver.findElement(LOGOUT_BUTTON).click();
         return new LoginPage(driver);
+    }
+
+    public void takeScreenshot(String fileName) throws IOException {
+        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.moveFile(src, new File(fileName + ".png"));
     }
 }

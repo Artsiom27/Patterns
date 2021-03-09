@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDriverSingleton {
+
     private static WebDriverSingleton instance = null;
     private WebDriver driver;
 

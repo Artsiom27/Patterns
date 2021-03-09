@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import pages.WebDriverSingleton;
 
 public class Singleton {
+
     private WebDriver driver;
     private static final String URL = "https://www.tut.by/";
 

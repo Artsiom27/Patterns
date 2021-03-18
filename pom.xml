@@ -62,21 +62,6 @@
         </plugins>
     </build>
 
-<!--    <environment>
-        <parameter>
-            <key>Browser</key>
-            <value>Chrome</value>
-        </parameter>
-        <parameter>
-            <key>Browser.Version</key>
-            <value>63.0</value>
-        </parameter>
-        <parameter>
-            <key>Stand</key>
-            <value>Production</value>
-        </parameter>
-    </environment>-->
-
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>

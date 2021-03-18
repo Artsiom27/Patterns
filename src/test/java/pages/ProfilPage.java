@@ -30,8 +30,10 @@ public class ProfilPage {
         return new LoginPage(driver);
     }
 
-    public void takeScreenshot(String fileName) throws IOException {
+    public void takeScreenshot(String fileName, String fileWithPath ) throws IOException {
         File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File DestFile = new File(fileWithPath);
+        FileUtils.copyFile(src, DestFile);
         FileUtils.moveFile(src, new File(fileName + ".png"));
     }
 }

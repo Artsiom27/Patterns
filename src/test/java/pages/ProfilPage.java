@@ -14,11 +14,11 @@ public class ProfilPage {
     private static final By USERMENU = By.xpath("//span[@class = 'uname']");
     private static final By LOGOUT_BUTTON = By.xpath("//div[@class=\"b-popup-i\"]/a");
 
-    private final WebDriver driver;
+    private final WebDriver driver = WebDriverSingletion.getInstance().openBrowser();
 
-    public ProfilPage(WebDriver driver) {
+    /*public ProfilPage(WebDriver driver) {
         this.driver = driver;
-    }
+    }*/
 
     public String getLoginTitle() {
         return driver.findElement(USERMENU).getText();
@@ -27,10 +27,10 @@ public class ProfilPage {
     public LoginPage logout() {
         driver.findElement(USERMENU).click();
         driver.findElement(LOGOUT_BUTTON).click();
-        return new LoginPage(driver);
+        return new LoginPage();
     }
 
-    public void takeScreenshot(String fileName, String fileWithPath ) throws IOException {
+    public void takeScreenshot(String fileName, String fileWithPath) throws IOException {
         File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         File DestFile = new File(fileWithPath);
         FileUtils.copyFile(src, DestFile);

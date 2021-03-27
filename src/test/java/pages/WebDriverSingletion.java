@@ -3,17 +3,17 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GetWebDriver {
+public class WebDriverSingletion {
 
-    private static GetWebDriver instance = null;
+    private static WebDriverSingletion instance = null;
     private WebDriver driver = new ChromeDriver();
 
-    private GetWebDriver() {
+    private WebDriverSingletion() {
     }
 
-    public static GetWebDriver getInstance() {
+    public static WebDriverSingletion getInstance() {
         if (instance == null) {
-            instance = new GetWebDriver();
+            instance = new WebDriverSingletion();
         }
         return instance;
     }
